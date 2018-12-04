@@ -2,7 +2,6 @@ queue_directory = /var/spool/postfix
 command_directory = /usr/sbin
 daemon_directory = /usr/libexec/postfix
 mail_owner = postfix
-# Set up host name
 myhostname="$HOSTNAME"
 inet_interfaces = all
 mydestination = $myhostname, localhost.$mydomain, localhost
@@ -10,24 +9,16 @@ unknown_local_recipient_reject_code = 550
 mynetworks = 0.0.0.0/0
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-
 smtp_data_done_timeout = 2400
 smtp_data_xfer_timeout = 720
-
 home_mailbox = Maildir/
-
-#smtpd_data_restrictions = reject_unauth_pipelining, permit
-
-##disable_dns_lookups=yes
 default_process_limit=1000
-
 default_destination_concurrency_limit=1000
 default_destination_recipient_limit=1000
 default_process_limit=1000
 smtp_mx_session_limit=1000
 smtpd_client_connection_count_limit=1000
 smtp_destination_concurrency_limit=1000
-
 smtpd_error_sleep_time=0
 debug_peer_level = 2
 debugger_command =
@@ -43,12 +34,5 @@ sample_directory = /usr/share/doc/postfix-2.3.3/samples
 readme_directory = /usr/share/doc/postfix-2.3.3/README_FILES
 message_size_limit = 30720000
 upload_max_filesize = 30720000
-
-#smtpd_milters = inet:localhost:8891
-#non_smtpd_milters = inet:localhost:8891
-#milter_default_action = accept
-
-#virtual_alias_maps = hash:/etc/postfix/virtual, regexp:/etc/postfix/virtual-regexp
-
 smtp_header_checks = pcre:/etc/postfix/header_checks
 transport_maps = hash:/etc/postfix/transport
