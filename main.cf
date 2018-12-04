@@ -2,6 +2,7 @@ queue_directory = /var/spool/postfix
 command_directory = /usr/sbin
 daemon_directory = /usr/libexec/postfix
 mail_owner = postfix
+smtpd_helo_required = no
 myhostname="$HOSTNAME"
 inet_interfaces = all
 mydestination = $myhostname, localhost.$mydomain, localhost
