@@ -17,12 +17,12 @@ postalias /etc/postfix/aliases
 
 # Disable local mail delivery
 postconf -e mydestination=
-# Don't relay for any domains
-if [ ! -z "$RELAY_DOMAINS" ]; then
-	postconf -e relay_domains=$RELAY_DOMAINS
-else
-	postconf -e relay_domains=
-fi
+# Relay for any domains
+#if [ ! -z "$RELAY_DOMAINS" ]; then
+#	postconf -e relay_domains=$RELAY_DOMAINS
+#else
+#	postconf -e relay_domains=
+#fi
 # As this is a server-based service, allow any message size -- we hope the server knows
 # what it is doing
 postconf -e "message_size_limit=0"
