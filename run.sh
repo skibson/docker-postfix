@@ -7,6 +7,7 @@ chown root: /var/spool/postfix/
 chown root: /var/spool/postfix/pid
 postconf -e smtputf8_enable=no
 postalias /etc/postfix/aliases
+postconf -e "smtpd_recipient_restrictions=reject_non_fqdn_recipient"
 postconf -e "message_size_limit=0"
 if [ ! -z "$HOSTNAME" ]; then
 	postconf -e myhostname="$HOSTNAME"
