@@ -6,11 +6,10 @@ RUN	true && \
 	(rm "/tmp/"* 2>/dev/null || true) && (rm -rf /var/cache/apk/* 2>/dev/null || true)
 
 COPY	supervisord.conf /etc/supervisord.conf
-COPY	run.sh /run.sh
-RUN	chmod +x /run.sh
 COPY	main.cf /etc/postfix/main.cf
 COPY	rsyslog.conf /etc/rsyslog.conf
-
+COPY	run.sh /run.sh
+RUN	chmod +x /run.sh
 VOLUME	[ "/var/spool/postfix", "/etc/postfix" ]
 
 USER	root
