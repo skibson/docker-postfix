@@ -9,8 +9,6 @@ postconf -e smtputf8_enable=no
 postalias /etc/postfix/aliases
 postconf -e "smtpd_recipient_restrictions=reject_non_fqdn_recipient"
 postconf -e "message_size_limit=0"
-postmap /etc/postfix/transport
-newaliases
 if [ ! -z "$HOSTNAME" ]; then
 	postconf -e myhostname="$HOSTNAME"
 else
@@ -19,3 +17,7 @@ fi
 sed -i -r -e 's/^#submission/submission/' /etc/postfix/master.cf
 echo "- Staring rsyslog and postfix"
 exec supervisord -c /etc/supervisord.conf
+cp /etc/postfix/transport /etc/postfix/transport.db
+postmap /etc/postfix/transport
+newaliases
+postfix reload
