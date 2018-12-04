@@ -29,6 +29,6 @@ the default Docker host name will be used. A lot of times, this will be just the
 which may make it difficult to track your emails in the log files. If you care about tracking at all,
 I suggest you set this variable, e.g.:
 ```
-docker run --rm --name postfix -e HOSTNAME=postfix-docker -p 1587:587 boky/postfix
+docker run --rm --name postfix -e HOSTNAME=postfix-docker -p 587:587 skibaja/postfix
 ```
 ```
