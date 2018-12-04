@@ -15,3 +15,4 @@ USER	root
 WORKDIR	/tmp
 
 EXPOSE 587
+ENTRYPOINT ["/run.sh"]
